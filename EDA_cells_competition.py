@@ -1,9 +1,10 @@
-import numpy as np
 import os
+
 import matplotlib.pyplot as plt
-from skimage.filters import threshold_otsu
-from skimage import feature
+import numpy as np
 import scipy
+from skimage import feature
+from skimage.filters import threshold_otsu
 
 
 def get_masks(image_folder):
@@ -52,7 +53,7 @@ def overlay_image_and_masks(img, masks):
     plt.show()
 
 
-def read_img_and_masks(img_number):
+def read_img_and_masks(img_number, images_folders):
     # call overlay_image_and_masks for a particular image
     img_path = os.path.join(images_folders[img_number], 'images')
     img = scipy.ndimage.imread(os.path.join(img_path, os.listdir(img_path)[0]))
@@ -69,6 +70,6 @@ if __name__ == '__main__':
     images_folders = [os.path.join(images_path, x) for x in os.listdir(images_path)]
 
     # Examples
-    read_img_and_masks(1)
-    read_img_and_masks(2)
-    read_img_and_masks(3)
+    read_img_and_masks(1, images_folders)
+    read_img_and_masks(2, images_folders)
+    read_img_and_masks(3, images_folders)
