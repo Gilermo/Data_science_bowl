@@ -23,7 +23,7 @@ def score_image(labels, y_pred):
     prec = []
     for t in np.arange(0.5, 1.0, 0.05):
         tp, fp, fn = precision_at(t, iou)
-        p = np.true_divide(tp,(tp + fp + fn))
+        p = np.true_divide(tp, (tp + fp + fn))
         # print("{:1.3f}\t{}\t{}\t{}\t{:1.3f}".format(t, tp, fp, fn, p))
         prec.append(p)
 
@@ -32,7 +32,7 @@ def score_image(labels, y_pred):
 
 def precision_at(threshold, iou):
     matches = iou > threshold
-    true_positives = np.sum(matches, axis=1) == 1   # Correct objects
+    true_positives = np.sum(matches, axis=1) == 1  # Correct objects
     false_positives = np.sum(matches, axis=0) == 0  # Missed objects
     false_negatives = np.sum(matches, axis=1) == 0  # Extra objects
     tp, fp, fn = np.sum(true_positives), np.sum(false_positives), np.sum(false_negatives)
