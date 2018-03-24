@@ -5,11 +5,8 @@ from keras.layers.convolutional import Conv2D, Conv2DTranspose
 from keras.layers.pooling import MaxPooling2D
 from keras.layers.merge import concatenate
 
-IMG_WIDTH = 128
-IMG_HEIGHT = 128
-IMG_CHANNELS = 3
 
-def unet(metric)
+def unet(metric, IMG_WIDTH, IMG_HEIGHT, IMG_CHANNELS):
     inputs = Input((IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS))
     s = Lambda(lambda x: x / 255) (inputs)
 
